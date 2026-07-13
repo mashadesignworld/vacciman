@@ -1,26 +1,12 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-vacciman-blue: #0b468c;
+  --color-vacciman-blueDark: #073266;
+  --color-vacciman-green: #8cc63f;
+  --color-vacciman-greenLight: #a3d959;
+  --color-vacciman-slate: #0f172a;
+  --color-vacciman-bgLight: #f8fafc;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* Your custom CSS styles can go here below the configuration */
