@@ -3,47 +3,44 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Activity, ShieldCheck, Stethoscope, HeartPulse } from "lucide-react";
 
 export default function Hero() {
-  // 1. Setup the image loop array (Place your actual images in the /public folder)
   const backgroundImages = [
-    "/hero1.jpg", // e.g., Modern hospital laboratory / diagnostic equipment
-    "/hero2.jpg", // e.g., Sterile surgical instruments setup
+    "/hero1.jpg", 
+    "/hero2.jpg", 
     "/hero3.jpg", 
-    "/hero4.jpg",// e.g., Pharmaceutical supply chain cold storage
   ];
 
   const [currentBg, setCurrentBg] = useState(0);
 
   useEffect(() => {
-    // Cycles images automatically every 5 seconds
     const interval = setInterval(() => {
       setCurrentBg((prev) => (prev + 1) % backgroundImages.length);
     }, 5000);
     return () => clearInterval(interval);
   }, [backgroundImages.length]);
 
+  // Swapped the 'icon' property out for raw public image asset paths
   const solutions = [
     {
       title: "Medical & Diagnostic Devices",
       description: "Procurement and supply of certified digital diagnostic frameworks and advanced hospital machinery.",
-      icon: Activity,
+      imageSrc: "/prod1.jpg", // e.g., Patient Monitor / Ultrasound machine thumbnail
     },
     {
       title: "Surgical Instruments",
       description: "Premium grade surgical tools and critical hospital consumables engineered for operating efficiency.",
-      icon: ShieldCheck,
+      imageSrc: "/prod2.jpg", // e.g., Surgical tray / forceps thumbnail
     },
     {
       title: "Pharmaceutical Distribution",
       description: "Safe delivery of both prescription and over-the-counter medical solutions across regional networks.",
-      icon: Stethoscope,
+      imageSrc: "/prod3.jpg", // e.g., Vaccine vial / medicine packaging thumbnail
     },
     {
       title: "Protective Infrastructure (PPE)",
       description: "Bulk distribution of compliant certified personal protective gear for frontline defense layers.",
-      icon: HeartPulse,
+      imageSrc: "/prod4.jpg", // e.g., Medical box of masks / nitrile gloves thumbnail
     },
   ];
 
@@ -70,11 +67,9 @@ export default function Hero() {
               />
             </div>
           ))}
-          {/* Tint Overlay: Blends the image with your brand blue for absolute text legibility */}
           <div className="absolute inset-0 bg-gradient-to-r from-vacciman-blue via-vacciman-blue/90 to-vacciman-blue/70 mix-blend-multiply" />
         </div>
 
-        {/* Dynamic Abstract Geometric Overlays (Adding depth on top of background images) */}
         <div className="absolute inset-0 opacity-10 mix-blend-overlay pointer-events-none z-10">
           <div className="absolute top-0 left-0 w-96 h-96 rounded-full border-[40px] border-white -translate-x-20 -translate-y-20" />
           <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-vacciman-green rounded-full blur-2xl" />
@@ -99,7 +94,6 @@ export default function Hero() {
               Learn More
             </Link>
             
-            {/* Carousel Slide Indicators */}
             <div className="flex gap-2 ml-4">
               {backgroundImages.map((_, idx) => (
                 <button
@@ -116,16 +110,16 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* 2. Four-Quadrant Solution Grid (Nesting over white viewport section) */}
+      {/* 2. Four-Quadrant Solution Grid (Unchanged Structure, Upgraded Visuals) */}
       <div id="solutions" className="max-w-7xl mx-auto px-6 md:px-12 -mt-10 relative z-20 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {solutions.map((item, idx) => {
-            const IconComponent = item.icon;
             return (
               <div 
                 key={idx} 
                 className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-between gap-6 group"
               >
+                {/* Left Side Content */}
                 <div className="space-y-2">
                   <h3 className="text-lg font-bold text-vacciman-slate tracking-tight uppercase group-hover:text-vacciman-blue transition-colors">
                     {item.title}
@@ -135,8 +129,15 @@ export default function Hero() {
                   </p>
                 </div>
 
-                <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center border border-slate-100 text-vacciman-green group-hover:bg-vacciman-green/10 transition-colors shrink-0">
-                  <IconComponent className="w-8 h-8 stroke-[1.75]" />
+                {/* Right Side Upgraded Equipment Thumbnail Box */}
+                <div className="w-20 h-20 rounded-2xl bg-slate-50 overflow-hidden flex items-center justify-center border border-slate-100 group-hover:border-vacciman-green/30 transition-all shrink-0 p-1 shadow-inner relative">
+                  <Image
+                    src={item.imageSrc}
+                    alt={item.title}
+                    fill
+                    sizes="80px"
+                    className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-110"
+                  />
                 </div>
               </div>
             );

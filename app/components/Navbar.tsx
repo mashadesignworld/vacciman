@@ -34,7 +34,7 @@ export default function Navbar() {
       alt="Vacciman Company Limited Logo"
       fill
       priority
-      sizes="(max-width: 768px) 240px, 320px"
+      sizes="(max-width: 768px) 340px, 420px"
       className="object-contain object-left transition-transform group-hover:scale-[1.02] duration-300"
     />
           </div>
