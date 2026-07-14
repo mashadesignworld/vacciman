@@ -51,22 +51,22 @@ export default function Hero() {
     {
       title: "Medical & Diagnostic Devices",
       description: "Procurement and supply of certified digital diagnostic frameworks, imaging equipment, and advanced hospital machinery.",
-      imageSrc: "/prod4.jpeg",
+      imageSrc: "/prod1.jpg",
     },
     {
       title: "Surgical Instruments",
       description: "Premium grade surgical tools, forceps, retractors, and critical operating consumables engineered for absolute precision.",
-      imageSrc: "/prod5.jpeg",
+      imageSrc: "/prod2.jpg",
     },
     {
       title: "Pharmaceutical Distribution",
       description: "Safe, GDP-compliant delivery of both prescription and over-the-counter medical solutions across robust regional networks.",
-      imageSrc: "/prod6.jpeg",
+      imageSrc: "/prod3.jpg",
     },
     {
       title: "Protective Infrastructure (PPE)",
       description: "Bulk distribution of fully compliant, certified personal protective gear, face protection, and frontline defense layers.",
-      imageSrc: "/prod7.jpeg",
+      imageSrc: "/prod4.jpg",
     },
   ];
 
