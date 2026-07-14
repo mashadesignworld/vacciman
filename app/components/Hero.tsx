@@ -125,13 +125,12 @@ export default function Hero() {
           {/* Left Text Column Block */}
           <div className="lg:col-span-7 space-y-6 text-left">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.15]">
-              BUILDING A HEALTHIER WORLD,<br />
-              <span className="text-vacciman-green">ONE COMPREHENSIVE MEDICAL SOLUTION</span> AT A TIME.
+              VACCIMMAN LTD,<br />
+              <span className="text-vacciman-green">MEDICAL EQUIPMENT SUPPLIERS</span> NAIROBI KENYA
             </h1>
             
             <p className="text-blue-100/90 text-sm sm:text-base md:text-lg max-w-xl font-medium leading-relaxed">
-              Explore our world-class medical equipment networks and precision dark cold-chain distribution pipelines tailored for healthcare dominance.
-            </p>
+Headquartered in Nairobi, Kenya, Vacciman Company Limited is a trusted regional gateway for certified medical devices, surgical systems, and GDP-compliant pharmaceuticals. We bridge the gap between global innovations and local healthcare facilities with secure, precision cold-chain distribution across East Africa.            </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <Link 
