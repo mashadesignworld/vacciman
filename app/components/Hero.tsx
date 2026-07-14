@@ -125,7 +125,7 @@ export default function Hero() {
           {/* Left Text Column Block */}
           <div className="lg:col-span-7 space-y-6 text-left">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.15]">
-              VACCIMMAN LTD,<br />
+              VACCIMAN LTD,<br />
               <span className="text-vacciman-green">MEDICAL EQUIPMENT SUPPLIERS</span> NAIROBI KENYA
             </h1>
             
