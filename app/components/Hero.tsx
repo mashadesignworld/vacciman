@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { MessageSquare, X, Send } from "lucide-react";
 
 export default function Hero() {
   const backgroundImages = [
@@ -12,6 +13,16 @@ export default function Hero() {
   ];
 
   const [currentBg, setCurrentBg] = useState(0);
+  
+  // Modal State Management
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    facility: "",
+    quantity: "1",
+    notes: "",
+  });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -20,32 +31,54 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, [backgroundImages.length]);
 
-  // Swapped the 'icon' property out for raw public image asset paths
   const solutions = [
     {
       title: "Medical & Diagnostic Devices",
       description: "Procurement and supply of certified digital diagnostic frameworks and advanced hospital machinery.",
-      imageSrc: "/prod1.jpg", // e.g., Patient Monitor / Ultrasound machine thumbnail
+      imageSrc: "/prod1.jpg",
     },
     {
       title: "Surgical Instruments",
       description: "Premium grade surgical tools and critical hospital consumables engineered for operating efficiency.",
-      imageSrc: "/prod2.jpg", // e.g., Surgical tray / forceps thumbnail
+      imageSrc: "/prod2.jpg",
     },
     {
       title: "Pharmaceutical Distribution",
       description: "Safe delivery of both prescription and over-the-counter medical solutions across regional networks.",
-      imageSrc: "/prod3.jpg", // e.g., Vaccine vial / medicine packaging thumbnail
+      imageSrc: "/prod3.jpg",
     },
     {
       title: "Protective Infrastructure (PPE)",
       description: "Bulk distribution of compliant certified personal protective gear for frontline defense layers.",
-      imageSrc: "/prod4.jpg", // e.g., Medical box of masks / nitrile gloves thumbnail
+      imageSrc: "/prod4.jpg",
     },
   ];
 
+  // Opens modal and dynamically presets the selected medical category
+  const handleOpenQuoteModal = (productTitle: string) => {
+    setSelectedProduct(productTitle);
+    setIsOpen(true);
+  };
+
+  // Pre-populates the WhatsApp API redirect link
+  const handleSendWhatsApp = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const phoneNumber = "254727206387"; // Primary Vacciman sales contact
+    const introduction = `Hello Vacciman Team, I would like to request a quote.`;
+    const details = `*Category:* ${selectedProduct}\n*Name:* ${formData.name}\n*Facility:* ${formData.facility}\n*Estimated Quantity:* ${formData.quantity}\n*Additional Notes:* ${formData.notes}`;
+    
+    const encodedMessage = encodeURIComponent(`${introduction}\n\n${details}`);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    // Open in a fresh window tab
+    window.open(whatsappUrl, "_blank");
+    setIsOpen(false); // Reset modal
+  };
+
   return (
-    <div id="home" className="w-full pt-28 bg-white">
+    <div id="home" className="w-full pt-28 bg-white relative">
+      
       {/* 1. Brand Header Canvas Zone */}
       <div className="mx-4 md:mx-6 rounded-[2.5rem] bg-vacciman-blue relative overflow-hidden text-white py-20 px-8 md:px-16 min-h-[520px] flex items-center shadow-xl shadow-vacciman-blue/10">
         
@@ -110,40 +143,136 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* 2. Four-Quadrant Solution Grid (Unchanged Structure, Upgraded Visuals) */}
+      {/* 2. Four-Quadrant Solution Grid */}
       <div id="solutions" className="max-w-7xl mx-auto px-6 md:px-12 -mt-10 relative z-20 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {solutions.map((item, idx) => {
             return (
               <div 
                 key={idx} 
-                className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-between gap-6 group"
+                className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between min-h-[220px] group relative overflow-hidden"
               >
-                {/* Left Side Content */}
-                <div className="space-y-2">
-                  <h3 className="text-lg font-bold text-vacciman-slate tracking-tight uppercase group-hover:text-vacciman-blue transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-slate-500 text-sm leading-relaxed max-w-xs">
-                    {item.description}
-                  </p>
+                <div className="flex items-start justify-between gap-6">
+                  {/* Text Description Block */}
+                  <div className="space-y-2 max-w-[70%]">
+                    <h3 className="text-lg font-bold text-vacciman-slate tracking-tight uppercase group-hover:text-vacciman-blue transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  {/* Thumbnail Image Box */}
+                  <div className="w-20 h-20 rounded-2xl bg-slate-50 overflow-hidden flex items-center justify-center border border-slate-100 group-hover:border-vacciman-green/30 transition-all shrink-0 p-1 shadow-inner relative">
+                    <Image
+                      src={item.imageSrc}
+                      alt={item.title}
+                      fill
+                      sizes="80px"
+                      className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
                 </div>
 
-                {/* Right Side Upgraded Equipment Thumbnail Box */}
-                <div className="w-20 h-20 rounded-2xl bg-slate-50 overflow-hidden flex items-center justify-center border border-slate-100 group-hover:border-vacciman-green/30 transition-all shrink-0 p-1 shadow-inner relative">
-                  <Image
-                    src={item.imageSrc}
-                    alt={item.title}
-                    fill
-                    sizes="80px"
-                    className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-110"
-                  />
+                {/* Micro CTA Container: Anchored beautifully on bottom row */}
+                <div className="mt-6 pt-4 border-t border-slate-50 flex justify-start">
+                  <button
+                    onClick={() => handleOpenQuoteModal(item.title)}
+                    className="inline-flex items-center gap-2 px-5 py-2 bg-slate-50 hover:bg-vacciman-green hover:text-vacciman-slate text-slate-600 hover:shadow-md rounded-xl text-xs font-bold transition-all"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    Get Quote
+                  </button>
                 </div>
               </div>
             );
           })}
         </div>
       </div>
+
+      {/* 3. Interactive WhatsApp Portal Modal Backdrop */}
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-opacity">
+          <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden border border-slate-100 transform scale-100 transition-transform">
+            
+            {/* Modal Header */}
+            <div className="bg-vacciman-blue text-white px-6 py-5 flex items-center justify-between relative">
+              <div className="space-y-0.5">
+                <span className="text-[10px] font-bold tracking-widest text-vacciman-green uppercase">Instant Quote</span>
+                <h4 className="text-base font-bold truncate pr-4">{selectedProduct}</h4>
+              </div>
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="p-1.5 hover:bg-white/10 rounded-lg transition-colors text-white/80 hover:text-white"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Form Content */}
+            <form onSubmit={handleSendWhatsApp} className="p-6 space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Your Name *</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g., Dr. John Doe"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:border-vacciman-blue"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Facility / Institution *</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g., Nairobi Referral Hospital"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:border-vacciman-blue"
+                  value={formData.facility}
+                  onChange={(e) => setFormData({ ...formData, facility: e.target.value })}
+                />
+              </div>
+
+              <div className="grid grid-cols-3 gap-4">
+                <div className="col-span-1">
+                  <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Est. Qty</label>
+                  <input
+                    type="number"
+                    min="1"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:border-vacciman-blue text-center"
+                    value={formData.quantity}
+                    onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
+                  />
+                </div>
+                <div className="col-span-2">
+                  <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Specific Demands</label>
+                  <input
+                    type="text"
+                    placeholder="e.g., Portable, 10L capacity"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:border-vacciman-blue"
+                    value={formData.notes}
+                    onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                  />
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <button
+                type="submit"
+                className="w-full mt-2 py-3 bg-[#25D366] hover:bg-[#20ba56] text-white rounded-xl text-sm font-bold flex items-center justify-center gap-2 shadow-lg shadow-[#25D366]/10 transition-all hover:-translate-y-0.5"
+              >
+                <Send className="w-4 h-4" />
+                Submit and Chat on WhatsApp
+              </button>
+            </form>
+
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

@@ -99,11 +99,9 @@ export default function Footer() {
               <li className="space-y-1">
                 <div className="flex items-center gap-3 text-slate-300 hover:text-vacciman-green transition-colors">
                   <Phone className="w-4 h-4 text-vacciman-green" />
-                  <a href="tel:+254722008649">+254 722 008 649</a>
+                  <a href="tel:+254722008649">+254 727 206 387</a>
                 </div>
-                <div className="flex items-center gap-3 pl-7 text-slate-300 hover:text-vacciman-green transition-colors">
-                  <a href="tel:+254727206387">+254 727 206 387</a>
-                </div>
+                
               </li>
               <li>
                 <a href="mailto:vacciman@gmail.com" className="flex items-center gap-3 text-slate-300 hover:text-vacciman-green transition-colors group">
