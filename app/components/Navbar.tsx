@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Globe, ChevronDown } from "lucide-react";
+import { Menu, X, Globe, ChevronDown, PhoneCall } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation"; // Added to highlight the active page if desired
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const pathname = usePathname(); // Tracks current route
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +19,13 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about" },
+    { name: "Solutions", href: "/solutions" },
+    // You can also add Contact here, or keep it purely as a CTA button on the right!
+  ];
 
   return (
     <nav
@@ -30,28 +39,33 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-3 group relative z-50">
           <div className="relative h-20 w-auto min-w-[140px] flex items-center">
             <Image
-      src="/vaccimanlogo.png"
-      alt="Vacciman Company Limited Logo"
-      fill
-      priority
-      sizes="(max-width: 768px) 340px, 420px"
-      className="object-contain object-left transition-transform group-hover:scale-[1.02] duration-300"
-    />
+              src="/vaccimanlogo.png"
+              alt="Vacciman Company Limited Logo"
+              fill
+              priority
+              sizes="(max-width: 768px) 340px, 420px"
+              className="object-contain object-left transition-transform group-hover:scale-[1.02] duration-300"
+            />
           </div>
         </Link>
 
         {/* Desktop Navigation Link Cluster */}
         <div className="hidden md:flex items-center gap-8">
-          {["Home", "About Us", "Solutions", "Market Reach", "Insights"].map((item) => (
-            <Link
-              key={item}
-              href={`#${item.toLowerCase().replace(" ", "-")}`}
-              className="text-sm font-medium text-slate-600 hover:text-vacciman-blue transition-colors relative group py-2"
-            >
-              {item}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-vacciman-green transition-all group-hover:w-full" />
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`text-sm font-medium transition-colors relative group py-2 ${
+                  isActive ? "text-vacciman-blue font-semibold" : "text-slate-600 hover:text-vacciman-blue"
+                }`}
+              >
+                {link.name}
+                <span className={`absolute bottom-0 left-0 h-0.5 bg-vacciman-green transition-all group-hover:w-full ${isActive ? 'w-full' : 'w-0'}`} />
+              </Link>
+            );
+          })}
         </div>
 
         {/* Action Button & Language Controller */}
@@ -61,9 +75,15 @@ export default function Navbar() {
             <span>EN</span>
             <ChevronDown className="w-3 h-3" />
           </button>
-          <button className="px-5 py-2.5 bg-vacciman-green hover:bg-vacciman-greenLight text-white text-sm font-semibold rounded-xl transition-all shadow-md shadow-vacciman-green/10 transform hover:-translate-y-0.5">
+          
+          {/* FIXED: Changed from "/#contact" to "/contact" */}
+          <Link 
+            href="/contact"
+            className="px-5 py-2.5 bg-vacciman-green hover:bg-vacciman-greenLight text-white text-sm font-semibold rounded-xl transition-all shadow-md shadow-vacciman-green/10 transform hover:-translate-y-0.5 flex items-center gap-2"
+          >
+            <PhoneCall className="w-4 h-4" />
             Contact Us
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Toggle Trigger */}
@@ -83,20 +103,26 @@ export default function Navbar() {
             className="md:hidden bg-white border-b border-slate-100 px-6 py-6"
           >
             <div className="flex flex-col gap-4">
-              {["Home", "About Us", "Solutions", "Market Reach", "Insights"].map((item) => (
+              {navLinks.map((link) => (
                 <Link
-                  key={item}
-                  href={`#${item.toLowerCase().replace(" ", "-")}`}
+                  key={link.name}
+                  href={link.href}
                   onClick={() => setIsOpen(false)}
                   className="text-base font-medium text-slate-700 hover:text-vacciman-blue py-2 block border-b border-slate-50"
                 >
-                  {item}
+                  {link.name}
                 </Link>
               ))}
+              
               <div className="pt-2 flex flex-col gap-3">
-                <button className="w-full py-3 bg-vacciman-blue text-white font-medium rounded-xl text-center shadow-md">
+                <Link
+                  href="/contact"
+                  onClick={() => setIsOpen(false)}
+                  className="w-full py-3 bg-vacciman-blue text-white font-medium rounded-xl text-center shadow-md flex items-center justify-center gap-2"
+                >
+                  <PhoneCall className="w-4 h-4" />
                   Contact Us
-                </button>
+                </Link>
               </div>
             </div>
           </motion.div>
