@@ -14,7 +14,6 @@ import {
   X,
   PhoneCall
 } from "lucide-react";
-import Image from "next/image";
 
 // Structured Product Dataset with Specifications
 interface Product {
@@ -30,64 +29,63 @@ interface Product {
 
 const PRODUCTS: Product[] = [
   {
-    id: "anes-6100",
-    name: "Anesthesia Workstation VS-6100",
-    category: "Operating Theatre",
-    model: "VS-6100 Plus",
-    description: "Highly integrated, precise ventilation anesthesia platform suitable for adult, pediatric, and neonatal clinical operations.",
-    image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=600", // High-quality medical equipment placeholder
-    specs: ["Vaporizer configuration: Isoflurane, Sevoflurane", "4-tubes flowmeter", "Integrated breathing circuit system"],
-    certification: "ISO / CE Approved"
-  },
-  {
-    id: "bed-mk3",
-    name: "3-Function Manual ICU Bed",
+    id: "hosp-bed",
+    name: "3-Function Manual Hospital Bed",
     category: "Hospital Furniture",
     model: "VS-MK-38K",
-    description: "Premium carbon-steel medical bed engineered with high-strength central braking system and collapsible side-rails.",
-    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&q=80&w=600",
-    specs: ["Backrest tilting: 0° – 75°", "Trendelenburg & Rev-Trendelenburg", "Safe Load Capacity: 250KG"],
+    description: "Premium manual clinical bed with backrest adjustment, legrest elevation, and whole-bed height adjustment.",
+    image: "/hospitalbed.png",
+    specs: ["Backrest adjustment: 0° – 75°", "Trendelenburg adjustment", "Collapsible side rails & central braking"],
     certification: "KeBS Compliant"
   },
   {
-    id: "lab-hem",
-    name: "3-Part Auto Hematology Analyzer",
-    category: "Laboratory Solutions",
-    model: "VS-HA-300",
-    description: "High-speed laboratory diagnostics platform designed for accurate complete blood count (CBC) testing at clinical scale.",
-    image: "https://images.unsplash.com/photo-1579154204601-01588f351167?auto=format&fit=crop&q=80&w=600",
-    specs: ["60 samples per hour throughput", "21 parameters + 3 histograms", "10.4-inch responsive LCD color screen"],
-    certification: "Pharmacy & Poisons Board Registered"
+    id: "ox-con",
+    name: "Medical Oxygen Concentrator",
+    category: "Home Care & Ward",
+    model: "VS-AC-10N",
+    description: "High-capacity continuous flow medical oxygen concentrator designed for dependable respiratory support.",
+    image: "/oxygen.png",
+    specs: ["10 Liters per minute continuous output", "High-purity oxygen concentration level", "Quiet operation with real-time alarms"],
+    certification: "ISO 13485 Certified"
   },
   {
-    id: "diag-mon",
-    name: "Multi-Parameter Patient Monitor",
-    category: "Diagnostics & ICU",
-    model: "VS-PM-9000",
-    description: "Continuous real-time physiological status tracking featuring modular, anti-electrosurgical noise protection.",
-    image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=600",
-    specs: ["Standard 6 vital parameters tracking", "12.1-inch TFT display frame", "Built-in thermal printing options"],
+    id: "ecg-mac",
+    name: "12-Channel ECG Machine",
+    category: "Diagnostic Devices",
+    model: "VS-ECG-C12B",
+    description: "Digital multi-channel electrocardiograph featuring an easy-to-read color display and built-in thermal printing.",
+    image: "/ecg.png",
+    specs: ["12-channel simultaneous acquisition", "Large high-resolution color screen", "Automated analysis and interpretation"],
     certification: "CE Medical Certified"
   },
   {
-    id: "surg-stap",
-    name: "Disposable Circular Intraluminal Stapler",
-    category: "Surgical Consumables",
-    model: "VS-984 CS",
-    description: "Surgical grade tissue manipulation tools providing exact staple formations to reduce tissue trauma and leaks.",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=600",
-    specs: ["Titanium alloy staples", "Extra-thin anvil design", "Intuitive sound trigger marker"],
-    certification: "ISO 13485 Certified"
+    id: "pat-mon",
+    name: "Multi-Parameter Patient Monitor",
+    category: "Diagnostic Devices",
+    model: "AM-9000E",
+    description: "Standard clinical vital signs monitor for measuring heart rate, SpO2, blood pressure, and temperature.",
+    image: "/monitor.png",
+    specs: ["Tracks ECG, SpO2, NIBP, Respiration, Temp", "Clear 12.1-inch color display", "Audible and visual limits alarms"],
+    certification: "CE Medical Certified"
+  },
+  {
+    id: "wheel-air",
+    name: "Lightweight Aluminum Wheelchair",
+    category: "Mobility & Home Care",
+    model: "VS-9560",
+    description: "Durable, foldable medical wheelchair built with heavy-duty comfort fabric and reliable safety brakes.",
+    image: "/wheelchair.png",
+    specs: ["Foldable lightweight aluminum frame", "Comfortable padded armrests", "Safe rear-wheel lock-up system"],
+    certification: "KeBS Compliant"
   }
 ];
 
 const CATEGORIES = [
   { name: "All Solutions", icon: Layers },
-  { name: "Operating Theatre", icon: Activity },
-  { name: "Diagnostics & ICU", icon: HeartPulse },
-  { name: "Laboratory Solutions", icon: Stethoscope },
   { name: "Hospital Furniture", icon: Layers },
-  { name: "Surgical Consumables", icon: CheckCircle2 }
+  { name: "Diagnostic Devices", icon: HeartPulse },
+  { name: "Home Care & Ward", icon: Activity },
+  { name: "Mobility & Home Care", icon: Stethoscope }
 ];
 
 export default function SolutionsPage() {
@@ -107,7 +105,6 @@ export default function SolutionsPage() {
 
   const handleRequestQuote = (e: React.FormEvent) => {
     e.preventDefault();
-    // In production, integrate this with an API route or EmailJS
     setQuoteSuccess(true);
     setTimeout(() => {
       setQuoteSuccess(false);
@@ -125,10 +122,10 @@ export default function SolutionsPage() {
             Our Portfolio
           </span>
           <h1 className="text-4xl font-extrabold text-slate-900 mt-4 tracking-tight">
-            Premium Clinical & Medical Solutions
+            Common Clinical & Medical Supplies
           </h1>
           <p className="text-slate-600 mt-3 text-lg">
-            Sourcing internationally certified diagnostics, operating theatre hardware, and lab consumables to healthcare facilities across Kenya.
+            Sourcing standard, certified medical furniture, diagnostics, and respiratory solutions for healthcare facilities and home-care settings across Kenya.
           </p>
         </div>
 
@@ -208,7 +205,7 @@ export default function SolutionsPage() {
 
                     {/* Highlights Spec Section */}
                     <ul className="mt-4 space-y-1.5 border-t border-slate-100 pt-4">
-                      {product.specs.slice(0, 2).map((spec, i) => (
+                      {product.specs.slice(0, 3).map((spec, i) => (
                         <li key={i} className="flex items-start gap-2 text-xs text-slate-600">
                           <CheckCircle2 className="w-3.5 h-3.5 text-vacciman-green shrink-0 mt-0.5" />
                           <span>{spec}</span>

@@ -134,10 +134,10 @@ Headquartered in Nairobi, Kenya, Vacciman Company Limited is a trusted regional 
 
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <Link 
-                href="#solutions" 
+                href="/solutions" 
                 className="px-8 py-3.5 bg-vacciman-green hover:bg-vacciman-greenLight text-vacciman-slate text-sm font-bold rounded-xl shadow-lg shadow-vacciman-green/20 transition-all transform hover:-translate-y-0.5"
               >
-                Learn More
+                View Products
               </Link>
               
               <div className="flex gap-2 sm:ml-4">

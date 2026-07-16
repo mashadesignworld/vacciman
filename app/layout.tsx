@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Vacciman Company Limited",
-  description: "Vacciman Pharmaceutical Company",
+  description: "Medical Equipment Suppliers",
 };
 
 export default function RootLayout({
