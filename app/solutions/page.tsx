@@ -70,7 +70,7 @@ const PRODUCTS: Product[] = [
   },
   {
     id: "wheel-air",
-    name: "Lightweight Aluminum Wheelchair",
+    name: "Aluminum Wheelchair",
     category: "Mobility & Home Care",
     model: "VS-9560",
     description: "Durable, foldable medical wheelchair built with heavy-duty comfort fabric and reliable safety brakes.",
