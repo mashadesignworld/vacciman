@@ -12,7 +12,9 @@ import {
   FileText, 
   CheckCircle2, 
   X,
-  PhoneCall
+  PhoneCall,
+  Scissors,
+  Syringe
 } from "lucide-react";
 
 // Structured Product Dataset with Specifications
@@ -77,14 +79,126 @@ const PRODUCTS: Product[] = [
     image: "/wheelchair.png",
     specs: ["Foldable lightweight aluminum frame", "Comfortable padded armrests", "Safe rear-wheel lock-up system"],
     certification: "KeBS Compliant"
+  },
+  {
+    id: "anes-mac",
+    name: "Advanced Anesthesia Machine",
+    category: "Operating Theatre & ICU",
+    model: "VS-AN-500XP",
+    description: "High-precision anesthesia workstation integrated with advanced ventilation modes and accurate gas delivery systems.",
+    image: "/anesthesia.jfif",
+    specs: ["Integrated multi-mode ventilator", "Precise pneumatic electronic flowmeters", "Adult, pediatric, and neonatal compatibility"],
+    certification: "CE Medical Certified"
+  },
+  {
+    id: "vent-mac",
+    name: "ICU Ventilator Machine",
+    category: "Operating Theatre & ICU",
+    model: "VS-VENT-800",
+    description: "Critical care medical ventilator providing invasive and non-invasive respiratory support with comprehensive monitoring.",
+    image: "/ventilator.jfif",
+    specs: ["15-inch color touchscreen interface", "Advanced lung protective ventilation strategies", "Intelligent parameter tracking & loops"],
+    certification: "ISO 13485 Certified"
+  },
+  {
+    id: "ot-table",
+    name: "Universal Operating Theatre Table",
+    category: "Operating Theatre & ICU",
+    model: "VS-OT-300E",
+    description: "Electro-hydraulic surgical table designed to handle diverse surgical positions with stability and multi-angle articulation.",
+    image: "/ot-table.jfif",
+    specs: ["Heavy-duty load capacity with stable base", "Radiolucent tabletop for C-arm compatibility", "Ergonomic multi-directional adjustment control"],
+    certification: "KeBS Compliant"
+  },
+  {
+    id: "crash-cart",
+    name: "Emergency Crash Cart",
+    category: "Hospital Furniture",
+    model: "VS-CC-75",
+    description: "Premium ABS mobile emergency trolley equipped with dedicated drawers, IV pole, and defibrillator shelf.",
+    image: "/crashcart.jfif",
+    specs: ["Secure centralized locking system", "Defibrillator shelf, oxygen tank holder & CPR board", "Smooth-rolling anti-static casters with brakes"],
+    certification: "KeBS Compliant"
+  },
+  {
+    id: "defib",
+    name: "Biphasic Defibrillator Monitor",
+    category: "Operating Theatre & ICU",
+    model: "VS-DF-400B",
+    description: "Professional emergency biphasic defibrillator with manual and AED modes, pacing, and integrated monitoring.",
+    image: "/defibrillator.jfif",
+    specs: ["Advanced biphasic current technology", "Rapid charging loop for critical interventions", "High-contrast thermal printer built-in"],
+    certification: "CE Medical Certified"
+  },
+  {
+    id: "ot-light",
+    name: "Portable LED Operating Light",
+    category: "Operating Theatre & ICU",
+    model: "VS-LED-12P",
+    description: "Mobile surgical light with battery backup, delivering cool shadowless illumination for minor and major procedures.",
+    image: "/ot-light.jfif",
+    specs: ["High-efficiency shadowless LED technology", "Adjustable light intensity and spot focus", "Robust mobile stand with durable battery backup"],
+    certification: "CE Medical Certified"
+  },
+  {
+    id: "surg-sets",
+    name: "General Surgical Instrument Set",
+    category: "Surgical Instruments",
+    model: "VS-SS-GEN",
+    description: "Premium grade stainless steel surgical sets containing instruments forged for precision, durability, and standard theatre use.",
+    image: "/surgicalsets.jfif",
+    specs: ["High-grade medical autoclave-safe stainless steel", "Comprehensive kit for general or specific surgeries", "Ergonomic layout inside heavy-duty sterilization box"],
+    certification: "ISO 9001 Certified"
+  },
+  {
+    id: "inf-pump",
+    name: "Dual-Channel Infusion & Syringe Pump",
+    category: "Ward & Treatment Equipment",
+    model: "VS-SP-20X",
+    description: "Intelligent medical volumetric infusion and micro-syringe pump setup delivering micro-dose accuracy for critical medication.",
+    image: "/pumps.jfif",
+    specs: ["Ultra-precise fluid and drug delivery rates", "Compatible with all major standard IV/Syringe brands", "Comprehensive anti-bolus and occlusion safety system"],
+    certification: "CE Medical Certified"
+  },
+  {
+    id: "diathermy",
+    name: "Electrosurgical Diathermy Machine",
+    category: "Operating Theatre & ICU",
+    model: "VS-DI-400W",
+    description: "High-frequency electrosurgical unit featuring monopole and bipole outputs for precise tissue cutting and coagulation.",
+    image: "/diathermy.jfif",
+    specs: ["Monopolar cutting/coagulation & Bipolar modes", "Intelligent feedback system to prevent skin burns", "Adjustable digital power panel for surgeon control"],
+    certification: "CE Medical Certified"
+  },
+  {
+    id: "theatre-foot",
+    name: "Anti-Static Theatre Footwear",
+    category: "Hospital Furniture",
+    model: "VS-TF-MED",
+    description: "Autoclavable, comfortable anti-static surgical clogs designed specifically for safety and hygiene inside sterile environments.",
+    image: "/footwear.jfif",
+    specs: ["Highly durable, slip-resistant, and anti-static", "Fully autoclavable for premium contamination control", "Ergonomic ventilation holes to reduce foot fatigue"],
+    certification: "KeBS Compliant"
+  },
+  {
+    id: "suction-mac",
+    name: "High-Vacuum Suction Machine",
+    category: "Ward & Treatment Equipment",
+    model: "VS-SU-20L",
+    description: "Heavy-duty electric aspirator designed for continuous negative pressure extraction of surgical fluids and mucus.",
+    image: "/suction.jfif",
+    specs: ["High-flow negative vacuum pump system", "Dual collection jars with safe overflow protection", "Quiet heavy-duty design with simple foot switch control"],
+    certification: "ISO 13485 Certified"
   }
 ];
 
 const CATEGORIES = [
   { name: "All Solutions", icon: Layers },
+  { name: "Operating Theatre & ICU", icon: HeartPulse },
+  { name: "Diagnostic Devices", icon: Activity },
+  { name: "Ward & Treatment Equipment", icon: Syringe },
+  { name: "Surgical Instruments", icon: Scissors },
   { name: "Hospital Furniture", icon: Layers },
-  { name: "Diagnostic Devices", icon: HeartPulse },
-  { name: "Home Care & Ward", icon: Activity },
   { name: "Mobility & Home Care", icon: Stethoscope }
 ];
 

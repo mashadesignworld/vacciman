@@ -13,7 +13,7 @@ export default function Home() {
      <Hero />
      <Capabilities />
      <Timeline />
-     <Footer />
+     
     </main>
   );
 }
