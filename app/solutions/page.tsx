@@ -189,6 +189,156 @@ const PRODUCTS: Product[] = [
     image: "/suction.jfif",
     specs: ["High-flow negative vacuum pump system", "Dual collection jars with safe overflow protection", "Quiet heavy-duty design with simple foot switch control"],
     certification: "ISO 13485 Certified"
+  },
+  {
+    id: "bp-mac",
+    name: "Automatic Blood Pressure Machine",
+    category: "Diagnostic Devices",
+    model: "VS-BP-A10",
+    description: "Accurate, easy-to-use digital blood pressure monitor with clear display and irregular heartbeat detection.",
+    image: "/bpmachine.jfif",
+    specs: ["Clinically validated accuracy", "Large back-lit LCD display", "Memory storage for multiple users"],
+    certification: "KeBS Compliant"
+  },
+  {
+    id: "glucometer",
+    name: "Blood Sugar Monitor",
+    category: "Home Care & Ward",
+    model: "VS-GL-G20",
+    description: "Compact glucometer for quick and precise blood glucose measurements at home or in clinical settings.",
+    image: "/glucometer.jfif",
+    specs: ["Small sample volume required", "Fast test results (< 5 seconds)", "Large memory capacity"],
+    certification: "ISO 13485 Certified"
+  },
+  {
+    id: "nebulizer",
+    name: "Medical Compressor Nebulizer",
+    category: "Home Care & Ward",
+    model: "VS-NB-C30",
+    description: "Effective aerosol therapy device for respiratory conditions, ensuring efficient medication delivery.",
+    image: "/nebulizer.jfif",
+    specs: ["Fine particle size nebulization", "Quiet operation", "Suitable for all ages"],
+    certification: "CE Medical Certified"
+  },
+  {
+    id: "waste-bins",
+    name: "Medical Waste Bins",
+    category: "Hospital Furniture",
+    model: "VS-WB-B40",
+    description: "Durable and hands-free foot-operated bins for safe and hygienic disposal of medical waste.",
+    image: "/wastebins.jfif",
+    specs: ["Color-coded for waste segregation", "Sealing lids to prevent odors", "Easy to clean"],
+    certification: "KeBS Compliant"
+  },
+  {
+    id: "weighing-scale",
+    name: "Digital Weighing Scale",
+    category: "Home Care & Ward",
+    model: "VS-WS-D50",
+    description: "High-precision electronic scale for accurate body weight measurements in homes and clinics.",
+    image: "/weighingscale.jfif",
+    specs: ["Large digital display", "Auto-on/off function", "Anti-slip surface"],
+    certification: "KeBS Compliant"
+  },
+  {
+    id: "hb-machine",
+    name: "Hemoglobin Meter (HB Machine)",
+    category: "Diagnostic Devices",
+    model: "VS-HB-M60",
+    description: "Portable device for quick hemoglobin level determinations, useful for anemia screening.",
+    image: "/hbmachine.jfif",
+    specs: ["Fast results (less than 15 seconds)", "Requires small blood sample", "Large memory"],
+    certification: "ISO 13485 Certified"
+  },
+  {
+    id: "autoclave",
+    name: "Vertical Autoclave Sterilizer",
+    category: "Sterilization & Laboratory",
+    model: "VS-AC-V70",
+    description: "Efficient steam sterilizer for medical instruments, ensuring complete sterilization in hospital settings.",
+    image: "/autoclave.jfif",
+    specs: ["High-temperature sterilization", "Over-pressure protection", "Easy to operate"],
+    certification: "CE Medical Certified"
+  },
+  {
+    id: "baby-scale",
+    name: "Baby Weighing Scale",
+    category: "Home Care & Ward",
+    model: "VS-BS-B80",
+    description: "Sensitive digital scale for accurate monitoring of an infant's weight gain, with comfortable tray.",
+    image: "/babyscale.jfif",
+    specs: ["High precision", "Hold function for wiggly babies", "Large easy-to-read screen"],
+    certification: "CE Medical Certified"
+  },
+  {
+    id: "stethoscope",
+    name: "Acoustic Stethoscope",
+    category: "Diagnostic Devices",
+    model: "VS-ST-A90",
+    description: "High-quality stethoscope for clear heart and lung sound auscultation by healthcare professionals.",
+    image: "/stethoscope.jfif",
+    specs: ["Excellent acoustic performance", "Comfortable eartips", "Durable construction"],
+    certification: "CE Medical Certified"
+  },
+  {
+    id: "sterilizing-drum",
+    name: "Sterilizing Drum",
+    category: "Sterilization & Laboratory",
+    model: "VS-SD-D100",
+    description: "Durable stainless steel container for sterilizing instruments and dressings, with ventilation slots.",
+    image: "/sterilizingdrum.jfif",
+    specs: ["High-grade stainless steel", "Vents can be opened/closed", "Autoclave safe"],
+    certification: "ISO 9001 Certified"
+  },
+  {
+    id: "exam-couch",
+    name: "Examination Couch",
+    category: "Hospital Furniture",
+    model: "VS-EC-C110",
+    description: "Comfortable and durable couch for patient examinations, with adjustable headrest and thick padding.",
+    image: "/examinationcouch.jfif",
+    specs: ["Adjustable headrest section", "Sturdy metal frame", "Easy-to-clean upholstery"],
+    certification: "KeBS Compliant"
+  },
+  {
+    id: "microscope",
+    name: "Compound Microscope",
+    category: "Sterilization & Laboratory",
+    model: "VS-MS-M120",
+    description: "Biological microscope with multiple magnification levels for laboratory and educational use.",
+    image: "/microscope.jfif",
+    specs: ["High-quality objectives", "LED illumination", "Adjustable stage"],
+    certification: "ISO 9001 Certified"
+  },
+  {
+    id: "centrifuge",
+    name: "Laboratory Centrifuge",
+    category: "Sterilization & Laboratory",
+    model: "VS-CF-C130",
+    description: "Centrifuge for separating substances of different densities, essential for blood and urine analysis.",
+    image: "/centrifuge.jfif",
+    specs: ["Variable speed control", "Timer function", "Safety interlock lid"],
+    certification: "ISO 13485 Certified"
+  },
+  {
+    id: "drip-stand",
+    name: "IV Drip Stand",
+    category: "Home Care & Ward",
+    model: "VS-DS-S140",
+    description: "Adjustable height IV stand with multiple hooks and wheeled base for easy mobility in wards.",
+    image: "/dripstand.jfif",
+    specs: ["Adjustable height range", "Sturdy wheeled base", "Multiple hooks for IV bags"],
+    certification: "KeBS Compliant"
+  },
+  {
+    id: "pulse-ox",
+    name: "Fingertip Pulse Oximeter",
+    category: "Home Care & Ward",
+    model: "VS-PO-O150",
+    description: "Compact and easy-to-use monitor for measuring oxygen saturation (SpO2) and pulse rate.",
+    image: "/pulseoximeter.jfif",
+    specs: ["Accurate SpO2 & pulse rate measurements", "Dual-color OLED display", "Auto shut-off function"],
+    certification: "CE Medical Certified"
   }
 ];
 

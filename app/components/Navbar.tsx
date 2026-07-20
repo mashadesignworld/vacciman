@@ -23,7 +23,7 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
-    { name: "Solutions", href: "/solutions" },
+    { name: "Products", href: "/solutions" },
     // You can also add Contact here, or keep it purely as a CTA button on the right!
   ];
 
